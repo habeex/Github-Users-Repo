@@ -8,6 +8,7 @@
     <color name="stroke_color">#FFD9D9D9</color>
     <color name="light_blue">#FFECF5F8</color>
     <color name="light_purple">#FFF6EDF8</color>
+    <color name="purple">#FF62006A</color>
 
     <color name="body">#4E4B66</color>
     <color name="input_background">#fff</color>
