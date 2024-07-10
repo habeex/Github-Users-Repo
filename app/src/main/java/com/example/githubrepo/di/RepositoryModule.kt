@@ -1,6 +1,8 @@
 package com.example.githubrepo.di
 
+import com.example.githubrepo.data.repository.RepositoriesRepositoryImp
 import com.example.githubrepo.data.repository.UserRepositoryImpl
+import com.example.githubrepo.domain.repository.RepositoriesRepository
 import com.example.githubrepo.domain.repository.UserRepository
 import dagger.Binds
 import dagger.Module
@@ -15,5 +17,9 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindUsersRepository(userRepositoryImpl: UserRepositoryImpl): UserRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindReposRepository(repositoriesRepositoryImp: RepositoriesRepositoryImp): RepositoriesRepository
 
 }
