@@ -50,13 +50,11 @@ import com.example.githubrepo.presentation.common.ErrorComponent
 import com.example.githubrepo.presentation.userdetails.components.UserRepoListShimmerEffect
 import com.example.githubrepo.presentation.userdetails.components.UserRepoShimmerEffect
 import com.example.githubrepo.presentation.userdetails.components.UserRepoTile
-import com.example.githubrepo.presentation.userdetails.state.UserEvent
 import com.example.githubrepo.util.DataState
 
 @Composable
 fun UserDetailsScreen(
     state: DataState<User>,
-    event: (UserEvent) -> Unit,
     navigateUp: () -> Unit
 ) {
     Column(

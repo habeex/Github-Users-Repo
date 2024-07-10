@@ -61,7 +61,7 @@ fun DetailsTopBarPreview() {
     GithubRepoTheme(dynamicColor = false) {
         AppTopBar(
             title = "Github User Details",
-            onBackClick = { /*TODO*/ }
+            onBackClick = {}
         )
     }
 }

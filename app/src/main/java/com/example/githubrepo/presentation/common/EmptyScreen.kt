@@ -31,7 +31,6 @@ import androidx.paging.LoadState
 import com.example.githubrepo.R
 import com.example.githubrepo.data.remote.error.ErrorHandler
 
-//TODO update icons/images
 @Composable
 fun EmptyScreen(message: String = "", error: LoadState.Error? = null, @DrawableRes iconId: Int? = null) {
 
