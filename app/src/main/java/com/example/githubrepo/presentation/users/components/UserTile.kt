@@ -18,6 +18,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -76,26 +77,26 @@ fun UserTile(
                     .fillMaxWidth(),
                 horizontalAlignment = Alignment.Start,
             ) {
-                Text(
-                    text = user.login,
-                    color = MaterialTheme.colorScheme.primary,
-                    style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.Bold
-
-                )
                 user.name?.let {
-                    Spacer(modifier = Modifier.height(Padding4))
                     Text(
-                        text = user.name,
+                        text = user.name!!,
                         fontSize = 12.sp,
-                        color = MaterialTheme.colorScheme.primary,
-                        style = MaterialTheme.typography.bodySmall
+                        color = colorResource(R.color.deep_blue),
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.Bold
                     )
                     Spacer(modifier = Modifier.height(Padding4))
                 }
+                Text(
+                    text = user.login,
+                    fontSize = 12.sp,
+                    color = MaterialTheme.colorScheme.primary,
+                    style = MaterialTheme.typography.labelLarge
+                )
                 user.bio?.let {
+                    Spacer(modifier = Modifier.height(Padding4))
                     Text(
-                        text = user.bio,
+                        text = user.bio!!,
                         fontSize = 12.sp,
                         color = MaterialTheme.colorScheme.primary,
                         style = MaterialTheme.typography.labelLarge,
@@ -106,7 +107,7 @@ fun UserTile(
                 Row {
                     user.location?.let {
                         Text(
-                            text = user.location,
+                            text = user.location!!,
                             fontSize = 10.sp,
                             color = colorResource(id = R.color.grey),
                             style = MaterialTheme.typography.bodySmall
@@ -115,7 +116,7 @@ fun UserTile(
                     }
                     user.email?.let {
                         Text(
-                            text = user.email,
+                            text = user.email!!,
                             fontSize = 10.sp,
                             color = colorResource(id = R.color.grey),
                             style = MaterialTheme.typography.bodySmall

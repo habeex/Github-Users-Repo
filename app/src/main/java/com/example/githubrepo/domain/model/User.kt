@@ -13,13 +13,13 @@ data class User(
     val score: Double,
     val type: String,
     val url: String,
-    val bio: String?,
-    val location: String?,
+    var bio: String?,
+    var location: String?,
     val followers: Int?,
     val following: Int?,
-    val name: String?,
+    var name: String?,
     val blog: String?,
-    val email: String?,
+    var email: String?,
     val public_repos: Int?,
     var repositories: List<RepositoryModel>? = null
 ): Parcelable

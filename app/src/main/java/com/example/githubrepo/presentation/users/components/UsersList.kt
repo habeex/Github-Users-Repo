@@ -14,7 +14,6 @@ import com.example.githubrepo.presentation.Dimens.Padding8
 import com.example.githubrepo.presentation.common.EmptyScreen
 
 
-
 @Composable
 fun UsersList(
     modifier: Modifier = Modifier,
@@ -31,6 +30,14 @@ fun UsersList(
                 count = users.itemCount,
             ) {
                 users[it]?.let { user ->
+                    //Note: Github API does not return full information on search endpoint
+                    // This is to simulate the data showing on the UI
+                    if (it % 2 == 0) {
+                        user.name = "Olorunishola Habeeb"
+                        user.location = "Abuja, Nigeria"
+                        user.email = "test@gmail.com"
+                        user.bio = "This is a random bio, which will be replace with actual content"
+                    }
                     UserTile(user = user, onClick = { onClick(user) })
                 }
             }
@@ -60,9 +67,13 @@ fun handlePagingResult(users: LazyPagingItems<User>): Boolean {
         }
 
         users.itemCount == 0 -> {
-            EmptyScreen(message = "We’ve searched the ends of the earth and we’ve not found this user, please try again", iconId = R.drawable.empty_record_state)
+            EmptyScreen(
+                message = "We’ve searched the ends of the earth and we’ve not found this user, please try again",
+                iconId = R.drawable.empty_record_state
+            )
             false
         }
+
         else -> {
             true
         }

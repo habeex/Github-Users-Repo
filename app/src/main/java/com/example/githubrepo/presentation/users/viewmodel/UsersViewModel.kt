@@ -1,5 +1,7 @@
 package com.example.githubrepo.presentation.users.viewmodel
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
@@ -16,8 +18,8 @@ class UsersViewModel @Inject constructor(
     private val searchUsersUseCase: SearchUsers
 ) : ViewModel() {
 
-    private var _state = MutableStateFlow(UsersState())
-    val state: MutableStateFlow<UsersState> = _state
+    private var _state = mutableStateOf(UsersState())
+    val state: MutableState<UsersState> = _state
 
 
     fun onEvent(event: UsersEvent) {

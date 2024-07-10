@@ -66,18 +66,20 @@ fun UserDetailsScreen(
             title = "Github User Details",
             onBackClick = navigateUp
         )
-        when(state){
+        when (state) {
             is DataState.Loading -> {
                 if (state.isLoading) {
                     UserRepoShimmerEffect()
                 }
             }
+
             is DataState.Response -> {
                 ErrorComponent.Show(
                     uiComponent = state.uiComponent,
-                    onClick = {navigateUp()}
+                    onClick = { navigateUp() }
                 )
             }
+
             is DataState.Success -> {
                 val user = state.data
                 UserDetails(user = user)
@@ -134,10 +136,9 @@ fun UserDetails(user: User, isUpdated: Boolean = false) {
             }
         }
         Spacer(modifier = Modifier.height(Padding16))
-        if (user.bio?.isNotEmpty() == true)
-        {
+        user.bio?.let {
             Text(
-                text = user.bio.trim(),
+                text = "${user.bio}".trim(),
                 fontSize = 12.sp,
                 color = MaterialTheme.colorScheme.primary,
                 style = MaterialTheme.typography.labelLarge,
@@ -145,54 +146,52 @@ fun UserDetails(user: User, isUpdated: Boolean = false) {
             )
             Spacer(modifier = Modifier.height(Padding16))
         }
-        if(user.location?.isNotEmpty() == true || user.blog?.isNotEmpty() == true) {
-             Row {
-                    if(user.location?.isNotEmpty() == true)
-                    {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_location),
-                            contentDescription = null,
-                            tint = Color.Unspecified
-                        )
-                        Spacer(modifier = Modifier.width(Padding4))
-                        Text(
-                            text = user.location,
-                            fontSize = 12.sp,
-                            color = colorResource(id = R.color.grey),
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                        Spacer(modifier = Modifier.width(Padding8))
-                    }
-                    if(user.blog?.isNotEmpty() == true)
-                    {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_link),
-                            contentDescription = null,
-                            tint = Color.Unspecified
-                        )
-                        Spacer(modifier = Modifier.width(Padding4))
-                        Box (
-                            modifier = Modifier.clickable {
-                                Intent(Intent.ACTION_VIEW).also {
-                                    val  link = if(user.blog.startsWith("https:")) user.blog else "https://${user.blog}"
-                                    it.data = Uri.parse(link)
-                                    if (it.resolveActivity(context.packageManager) != null) {
-                                        context.startActivity(it)
-                                    }
+        if (user.location?.isNotEmpty() == true || user.blog?.isNotEmpty() == true) {
+            Row {
+                user.location?.let {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_location),
+                        contentDescription = null,
+                        tint = Color.Unspecified
+                    )
+                    Spacer(modifier = Modifier.width(Padding4))
+                    Text(
+                        text = user.location.toString(),
+                        fontSize = 12.sp,
+                        color = colorResource(id = R.color.grey),
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                    Spacer(modifier = Modifier.width(Padding8))
+                }
+                user.blog?.let {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_link),
+                        contentDescription = null,
+                        tint = Color.Unspecified
+                    )
+                    Spacer(modifier = Modifier.width(Padding4))
+                    Box(
+                        modifier = Modifier.clickable {
+                            Intent(Intent.ACTION_VIEW).also {
+                                val link =
+                                    if (user.blog.startsWith("https:")) user.blog else "https://${user.blog}"
+                                it.data = Uri.parse(link)
+                                if (it.resolveActivity(context.packageManager) != null) {
+                                    context.startActivity(it)
                                 }
                             }
-                        ){
-                            Text(
-                                text = user.blog,
-                                fontSize = 12.sp,
-                                color = MaterialTheme.colorScheme.primary,
-                                style = MaterialTheme.typography.labelLarge,
-                                fontWeight = FontWeight.W600,
-                            )
                         }
+                    ) {
+                        Text(
+                            text = user.blog,
+                            fontSize = 12.sp,
+                            color = MaterialTheme.colorScheme.primary,
+                            style = MaterialTheme.typography.labelLarge,
+                            fontWeight = FontWeight.W600,
+                        )
                     }
-
                 }
+            }
         }
         Spacer(modifier = Modifier.height(Padding12))
         Row {
@@ -222,9 +221,10 @@ fun UserDetails(user: User, isUpdated: Boolean = false) {
                 fontSize = 14.sp,
             )
             Spacer(modifier = Modifier.width(Padding4))
-            Box(modifier = Modifier
-                .clip(CircleShape)
-                .background(colorResource(id = R.color.lighter_grey))
+            Box(
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .background(colorResource(id = R.color.lighter_grey))
             ) {
                 Text(
                     modifier = Modifier
@@ -250,9 +250,9 @@ fun UserDetails(user: User, isUpdated: Boolean = false) {
                 thickness = 2.dp
             )
         }
-        if(user.repositories.isNullOrEmpty() && !isUpdated)
+        if (user.repositories.isNullOrEmpty() && !isUpdated)
             UserRepoListShimmerEffect()
-        if(user.repositories.isNullOrEmpty() && isUpdated)
+        if (user.repositories.isNullOrEmpty() && isUpdated)
             EmptyScreen("No repositories found", iconId = R.drawable.empty_record_state)
         user.repositories?.let { repositories ->
             LazyColumn(
@@ -262,7 +262,7 @@ fun UserDetails(user: User, isUpdated: Boolean = false) {
                 verticalArrangement = Arrangement.spacedBy(Padding8),
                 contentPadding = PaddingValues(vertical = Padding8)
             ) {
-                items(repositories.size){
+                items(repositories.size) {
                     UserRepoTile(
                         modifier = Modifier
                             .fillMaxWidth(),
