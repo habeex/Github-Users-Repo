@@ -41,7 +41,7 @@ fun UserTile(
     modifier: Modifier = Modifier,
     user: User,
     onClick: (() -> Unit)? = null
-){
+) {
     val context = LocalContext.current
     Card(
         modifier = modifier.clickable { onClick?.invoke() },
@@ -54,9 +54,10 @@ fun UserTile(
             disabledElevation = 0.0.dp,
         ),
         border = BorderStroke(0.4.dp, colorResource(id = R.color.stroke_color))
-        ){
+    ) {
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .padding(Padding8),
             verticalAlignment = Alignment.Top,
         ) {
@@ -81,36 +82,44 @@ fun UserTile(
                     fontWeight = FontWeight.Bold
 
                 )
-                Spacer(modifier = Modifier.height(Padding4))
-                Text(
-                    text = "DynamicWebPaige",
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.primary,
-                    style = MaterialTheme.typography.bodySmall
-                )
-                Spacer(modifier = Modifier.height(Padding4))
-                Text(
-                    text = "This is a random bio, which will be replace with actual content",
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.primary,
-                    style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.W500
-                )
-                Spacer(modifier = Modifier.height(Padding4))
+                user.name?.let {
+                    Spacer(modifier = Modifier.height(Padding4))
+                    Text(
+                        text = user.name,
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.primary,
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                    Spacer(modifier = Modifier.height(Padding4))
+                }
+                user.bio?.let {
+                    Text(
+                        text = user.bio,
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.primary,
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.W500
+                    )
+                    Spacer(modifier = Modifier.height(Padding4))
+                }
                 Row {
-                    Text(
-                        text = "Lagos, Nigeria",
-                        fontSize = 10.sp,
-                        color = colorResource(id = R.color.grey),
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                    Spacer(modifier = Modifier.width(Padding6))
-                    Text(
-                        text = "momoko@gmail.com",
-                        fontSize = 10.sp,
-                        color = colorResource(id = R.color.grey),
-                        style = MaterialTheme.typography.bodySmall
-                    )
+                    user.location?.let {
+                        Text(
+                            text = user.location,
+                            fontSize = 10.sp,
+                            color = colorResource(id = R.color.grey),
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                        Spacer(modifier = Modifier.width(Padding6))
+                    }
+                    user.email?.let {
+                        Text(
+                            text = user.email,
+                            fontSize = 10.sp,
+                            color = colorResource(id = R.color.grey),
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
                 }
             }
         }
@@ -133,13 +142,13 @@ fun UserTilePreview() {
             type = "User",
             score = 1.0,
             bio = "",
-            location = "",
+            location = "Abuja, ",
             followers = 0,
             following = 0,
-            name = "",
+            name = "Habeeb Bayo",
             blog = "",
             public_repos = 0,
-            email = ""
+            email = "olorunisholahabeeb@mail.com"
         ), onClick = {}
     )
 }

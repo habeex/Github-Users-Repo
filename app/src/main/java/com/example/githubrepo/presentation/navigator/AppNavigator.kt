@@ -129,7 +129,6 @@ fun AppNavigator() {
                 val state by userViewModel.state.collectAsState()
                 UserDetailsScreen(
                     state = state,
-                    event = userViewModel::onEvent,
                     navigateUp = { navController.navigateUp() },
                 )
 
