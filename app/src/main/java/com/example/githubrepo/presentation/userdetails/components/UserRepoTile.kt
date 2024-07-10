@@ -25,8 +25,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.githubrepo.R
+import com.example.githubrepo.domain.model.MockData
 import com.example.githubrepo.domain.model.RepositoryModel
-import com.example.githubrepo.domain.model.User
 import com.example.githubrepo.presentation.Dimens.Padding16
 import com.example.githubrepo.presentation.Dimens.Padding2
 import com.example.githubrepo.presentation.Dimens.Padding4
@@ -40,7 +40,7 @@ fun UserRepoTile(
     modifier: Modifier = Modifier,
     repository: RepositoryModel,
     onClick: (() -> Unit)? = null
-){
+) {
     Card(
         modifier = modifier.clickable { onClick?.invoke() },
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background),
@@ -192,35 +192,7 @@ fun RepositoryTilePreview() {
         modifier = Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.secondary),
-        RepositoryModel(
-            owner =  User(
-                login = "habeex",
-                id = 1849920,
-                avatar_url = "https://avatars.githubusercontent.com/u/1849920?v=4",
-                url = "https://api.github.com/users/habeex",
-                html_url = "https://github.com/habeex",
-                repos_url = "https://api.github.com/users/habeex/repos",
-                type = "User",
-                score = 1.0,
-                bio = "",
-                location = "",
-                followers = 0,
-                following = 0,
-                name = "",
-                blog = "",
-                public_repos = 0,
-                email = ""
-            ),
-            name = "scrcpy",
-            full_name = "habeex/BluetoothPrinter",
-            stargazers_count = 105485,
-            forks = 10238,
-            watchers = 105485,
-            visibility = "public",
-            language = "C",
-            updated_at = "2024-06-08T09:54:25Z",
-            description = "Empowering everyone to build reliable and efficient software.",
-            topics = listOf("Design system", "Component- misc", "Status- New")
-        ), onClick = {}
+        MockData.getRepo(),
+        onClick = {}
     )
 }

@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.githubrepo.R
+import com.example.githubrepo.domain.model.MockData
 import com.example.githubrepo.domain.model.User
 import com.example.githubrepo.presentation.Dimens.Padding4
 import com.example.githubrepo.presentation.Dimens.Padding6
@@ -132,23 +133,6 @@ fun UserTile(
 fun UserTilePreview() {
     UserTile(
         modifier = Modifier.fillMaxWidth(),
-        user = User(
-            login = "habeex",
-            id = 1849920,
-            avatar_url = "https://avatars.githubusercontent.com/u/1849920?v=4",
-            url = "https://api.github.com/users/habeex",
-            html_url = "https://github.com/habeex",
-            repos_url = "https://api.github.com/users/habeex/repos",
-            type = "User",
-            score = 1.0,
-            bio = "",
-            location = "Abuja, ",
-            followers = 0,
-            following = 0,
-            name = "Habeeb Bayo",
-            blog = "",
-            public_repos = 0,
-            email = "olorunisholahabeeb@mail.com"
-        ), onClick = {}
+        user = MockData.getUser(), onClick = {}
     )
 }
