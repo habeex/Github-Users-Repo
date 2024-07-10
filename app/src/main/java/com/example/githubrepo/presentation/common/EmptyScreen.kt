@@ -42,7 +42,7 @@ fun EmptyScreen(message: String = "", error: LoadState.Error? = null, @DrawableR
         mutableStateOf(iconId ?: R.drawable.empty_state)
     }
 
-    if (error == null){
+    if (error == null && message.isNotEmpty()){
         messageError = message
     }
 
@@ -58,8 +58,7 @@ fun EmptyScreen(message: String = "", error: LoadState.Error? = null, @DrawableR
     LaunchedEffect(key1 = true) {
         startAnimation = true
     }
-
-    EmptyContent(alphaAnim = alphaAnimation, message = message, iconId = icon)
+    EmptyContent(alphaAnim = alphaAnimation, message = messageError, iconId = icon)
 
 }
 

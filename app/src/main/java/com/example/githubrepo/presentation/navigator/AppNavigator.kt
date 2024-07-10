@@ -28,7 +28,7 @@ import com.example.githubrepo.presentation.userdetails.UserDetailsScreen
 import com.example.githubrepo.presentation.userdetails.state.UserEvent
 import com.example.githubrepo.presentation.userdetails.state.UserViewModel
 import com.example.githubrepo.presentation.users.UsersScreen
-import com.example.githubrepo.presentation.users.state.UsersViewModel
+import com.example.githubrepo.presentation.users.viewmodel.UsersViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

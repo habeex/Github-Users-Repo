@@ -5,12 +5,13 @@ import com.example.githubrepo.util.Utils
 import retrofit2.Response
 import java.net.ConnectException
 import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 
 object ErrorHandler {
 
     private const val _500 = "Internal Server Error. Please try again later"
     private const val _401 = "Authorisation Failed: User not authorised"
-    private const val _404 = "User record not found"
+    private const val _404 = "No record found"
     private const val _400 = "Client Error: Bad Request"
     private const val _502 = "Server Error: Bad Gateway"
     private const val _503 = "Server Error: Service Unavailable"
@@ -45,17 +46,11 @@ object ErrorHandler {
     }
 
     fun handleError(t: Throwable?): String{
+        t?.printStackTrace()
         return  when (t) {
-            is SocketTimeoutException -> {
-                timeoutError
-            }
-
-            is ConnectException -> {
-                connectError
-            }
-            is retrofit2.HttpException -> {
-                handleResponseError(t.response())
-            }
+            is SocketTimeoutException -> timeoutError
+            is UnknownHostException, is ConnectException -> connectError
+            is retrofit2.HttpException -> handleResponseError(t.response())
             else -> unknownError
         }
     }
