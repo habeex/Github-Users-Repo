@@ -2,6 +2,7 @@ package com.example.githubrepo.util
 
 import androidx.multidex.BuildConfig
 import com.google.gson.Gson
+import java.text.NumberFormat
 
 object Utils {
 
@@ -17,6 +18,14 @@ object Utils {
 
         }else
             null
+    }
+
+    fun formatNumber(number: Int): String {
+        return if (number >= 1000) {
+            NumberFormat.getNumberInstance().format(number / 1000) + "k"
+        } else {
+            number.toString()
+        }
     }
 }
 

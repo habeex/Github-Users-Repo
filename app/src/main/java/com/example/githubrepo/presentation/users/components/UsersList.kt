@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
+import com.example.githubrepo.R
 import com.example.githubrepo.domain.model.User
 import com.example.githubrepo.presentation.Dimens.Padding8
 import com.example.githubrepo.presentation.common.EmptyScreen
@@ -54,12 +55,12 @@ fun handlePagingResult(users: LazyPagingItems<User>): Boolean {
         }
 
         error != null -> {
-            EmptyScreen(error = error)
+            EmptyScreen(error = error, iconId = R.drawable.empty_record_state)
             false
         }
 
         users.itemCount == 0 -> {
-            EmptyScreen(message = "We’ve searched the ends of the earth and we’ve not found this user, please try again")
+            EmptyScreen(message = "We’ve searched the ends of the earth and we’ve not found this user, please try again", iconId = R.drawable.empty_record_state)
             false
         }
         else -> {

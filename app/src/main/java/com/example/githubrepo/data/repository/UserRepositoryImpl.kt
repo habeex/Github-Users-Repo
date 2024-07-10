@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.githubrepo.data.remote.UserApi
 import com.example.githubrepo.data.remote.datasource.SearchUsersPagingSource
+import com.example.githubrepo.domain.model.RepositoryModel
 import com.example.githubrepo.domain.model.User
 import com.example.githubrepo.domain.repository.UserRepository
 import kotlinx.coroutines.flow.Flow
@@ -26,6 +27,10 @@ class UserRepositoryImpl@Inject constructor(
     }
 
     override suspend fun getUser(username: String): User {
-        return  api.getUser(username)
+        return api.getUser(username)
+    }
+
+    override suspend fun getUserRepositories(username: String): List<RepositoryModel> {
+        return api.getUserRepositories(username)
     }
 }

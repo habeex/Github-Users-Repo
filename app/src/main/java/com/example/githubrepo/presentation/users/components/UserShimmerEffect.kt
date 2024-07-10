@@ -33,24 +33,7 @@ import com.example.githubrepo.R
 import com.example.githubrepo.presentation.Dimens.Padding4
 import com.example.githubrepo.presentation.Dimens.Padding6
 import com.example.githubrepo.presentation.Dimens.Padding8
-
-fun Modifier.shimmerEffect(cornerRadius: CornerRadius = CornerRadius(x = 12f, y = 12f)) = composed {
-    val transition = rememberInfiniteTransition(label = "shimmer effect")
-    val alpha = transition.animateFloat(
-        initialValue = 0.2f, targetValue = 0.9f, animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 1000),
-            repeatMode = RepeatMode.Reverse
-        ),
-        label = "transparency of the background color"
-    ).value
-    val color = colorResource(id = R.color.shimmer).copy(alpha = alpha)
-    drawBehind {
-        drawRoundRect(
-            color = color,
-            cornerRadius = cornerRadius
-        )
-    }
-}
+import com.example.githubrepo.presentation.common.shimmerEffect
 
 @Composable
 fun UserCardShimmerEffect(modifier: Modifier = Modifier) {

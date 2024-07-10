@@ -1,6 +1,7 @@
 package com.example.githubrepo.presentation.common
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.annotation.DrawableRes
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -32,14 +33,14 @@ import com.example.githubrepo.data.remote.error.ErrorHandler
 
 //TODO update icons/images
 @Composable
-fun EmptyScreen(message: String = "", error: LoadState.Error? = null) {
+fun EmptyScreen(message: String = "", error: LoadState.Error? = null, @DrawableRes iconId: Int? = null) {
 
     var messageError by remember {
         mutableStateOf(parseErrorMessage(error = error))
     }
 
     var icon by remember {
-        mutableStateOf(R.drawable.empty_state)
+        mutableStateOf(iconId ?: R.drawable.empty_state)
     }
 
     if (error == null){

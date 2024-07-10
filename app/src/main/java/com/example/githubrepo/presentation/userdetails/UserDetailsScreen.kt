@@ -4,7 +4,20 @@ import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -32,8 +45,11 @@ import com.example.githubrepo.presentation.Dimens.Padding20
 import com.example.githubrepo.presentation.Dimens.Padding4
 import com.example.githubrepo.presentation.Dimens.Padding8
 import com.example.githubrepo.presentation.common.AppTopBar
-import com.example.githubrepo.presentation.common.CustomCircularProgressIndicator
+import com.example.githubrepo.presentation.common.EmptyScreen
 import com.example.githubrepo.presentation.common.ErrorComponent
+import com.example.githubrepo.presentation.userdetails.components.UserRepoListShimmerEffect
+import com.example.githubrepo.presentation.userdetails.components.UserRepoShimmerEffect
+import com.example.githubrepo.presentation.userdetails.components.UserRepoTile
 import com.example.githubrepo.presentation.userdetails.state.UserEvent
 import com.example.githubrepo.util.DataState
 
@@ -56,7 +72,7 @@ fun UserDetailsScreen(
         when(state){
             is DataState.Loading -> {
                 if (state.isLoading) {
-                    CustomCircularProgressIndicator()
+                    UserRepoShimmerEffect()
                 }
             }
             is DataState.Response -> {
@@ -69,13 +85,18 @@ fun UserDetailsScreen(
                 val user = state.data
                 UserDetails(user = user)
             }
+
+            is DataState.Update -> {
+                val user = state.data
+                UserDetails(user = user, true)
+            }
         }
 
     }
 }
 
 @Composable
-fun UserDetails(user: User) {
+fun UserDetails(user: User, isUpdated: Boolean = false) {
     val context = LocalContext.current
     Column(
         modifier = Modifier
@@ -119,7 +140,7 @@ fun UserDetails(user: User) {
         if (user.bio?.isNotEmpty() == true)
         {
             Text(
-                text = user.bio,
+                text = user.bio.trim(),
                 fontSize = 12.sp,
                 color = MaterialTheme.colorScheme.primary,
                 style = MaterialTheme.typography.labelLarge,
@@ -232,7 +253,27 @@ fun UserDetails(user: User) {
                 thickness = 2.dp
             )
         }
-        Spacer(modifier = Modifier.height(Padding16))
+        if(user.repositories.isNullOrEmpty() && !isUpdated)
+            UserRepoListShimmerEffect()
+        if(user.repositories.isNullOrEmpty() && isUpdated)
+            EmptyScreen("No repositories found", iconId = R.drawable.empty_record_state)
+        user.repositories?.let { repositories ->
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(vertical = Padding16),
+                verticalArrangement = Arrangement.spacedBy(Padding8),
+                contentPadding = PaddingValues(vertical = Padding8)
+            ) {
+                items(repositories.size){
+                    UserRepoTile(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        repositories[it], onClick = {}
+                    )
+                }
+            }
+        }
 
     }
 }

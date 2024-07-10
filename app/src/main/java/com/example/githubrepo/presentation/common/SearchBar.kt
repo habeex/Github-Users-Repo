@@ -26,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
@@ -56,7 +57,7 @@ fun SearchBar(
             onClick?.invoke()
         }
     }
-
+    val keyboardController = LocalSoftwareKeyboardController.current
     Box(modifier = modifier) {
         TextField(
             modifier = Modifier
@@ -78,7 +79,10 @@ fun SearchBar(
                     modifier = Modifier
                         .padding(end = 8.dp),
                     text = "Search",
-                    onClick = onSearch,
+                    onClick = {
+                        onSearch()
+                        keyboardController?.hide()
+                    }
                 )
             },
             placeholder = {
@@ -102,6 +106,7 @@ fun SearchBar(
             keyboardActions = KeyboardActions(
                 onSearch = {
                     onSearch()
+                    keyboardController?.hide()
                 }
             ),
             textStyle = MaterialTheme.typography.bodySmall,

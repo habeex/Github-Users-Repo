@@ -1,6 +1,7 @@
 package com.example.githubrepo.data.remote
 
 import com.example.githubrepo.data.remote.dto.UserResponse
+import com.example.githubrepo.domain.model.RepositoryModel
 import com.example.githubrepo.domain.model.User
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,4 +19,9 @@ interface UserApi {
     suspend fun getUser(
         @Path("username") username: String,
     ): User
+
+    @GET("users/{username}/repos")
+    suspend fun getUserRepositories(
+        @Path("username") username: String,
+    ): List<RepositoryModel>
 }

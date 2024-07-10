@@ -14,4 +14,26 @@
     <color name="input_background">#fff</color>
     <color name="placeholder">#A0A3BD</color>
     <color name="shimmer">#C3C3C3</color>
+
+    //Language Colors
+    <color name="java_color">#b07219</color>
+    <color name="python_color">#3572A5</color>
+    <color name="javascript_color">#f1e05a</color>
+    <color name="cpp_color">#f34b7d</color>
+    <color name="csharp_color">#178600</color>
+    <color name="php_color">#4F5D95</color>
+    <color name="ruby_color">#701516</color>
+    <color name="swift_color">#ffac45</color>
+    <color name="go_color">#00ADD8</color>
+    <color name="kotlin_color">#A97BFF</color>
+    <color name="typescript_color">#2b7489</color>
+    <color name="c_color">#555555</color>
+    <color name="shell_color">#89e051</color>
+    <color name="rust_color">#dea584</color>
+    <color name="scala_color">#c22d40</color>
+    <color name="objectivec_color">#438eff</color>
+    <color name="perl_color">#0298c3</color>
+    <color name="r_color">#198CE7</color>
+    <color name="dart_color">#00B4AB</color>
+    <color name="assembly_color">#6E4C13</color>
 </resources>
