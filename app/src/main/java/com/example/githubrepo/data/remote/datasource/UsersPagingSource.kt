@@ -4,9 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.githubrepo.data.remote.UserApi
 import com.example.githubrepo.domain.model.User
-import kotlinx.coroutines.delay
 import retrofit2.HttpException
-import java.lang.Exception
 
 class SearchUsersPagingSource(
     private val api: UserApi,

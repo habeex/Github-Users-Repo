@@ -66,7 +66,6 @@ fun UserDetailsScreen(
     ) {
         AppTopBar(
             title = "Github User Details",
-            onBookMarkClick = { /*TODO*/ },
             onBackClick = navigateUp
         )
         when(state){

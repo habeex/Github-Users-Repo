@@ -1,7 +1,6 @@
 package com.example.githubrepo.domain.model
 
 import android.os.Parcelable
-import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -20,6 +19,7 @@ data class User(
     val following: Int?,
     val name: String?,
     val blog: String?,
+    val email: String?,
     val public_repos: Int?,
     var repositories: List<RepositoryModel>? = null
 ): Parcelable

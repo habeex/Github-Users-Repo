@@ -45,7 +45,7 @@ import com.example.githubrepo.presentation.common.shimmerEffect
 @Composable
 fun UserRepoShimmerEffect(modifier: Modifier = Modifier) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .padding(horizontal = Padding20)
     ) {
         Row(
@@ -171,7 +171,7 @@ fun UserRepoShimmerEffect(modifier: Modifier = Modifier) {
 @Composable
 fun UserRepoListShimmerEffect(modifier: Modifier = Modifier) {
     LazyColumn(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(vertical = Padding16),
         verticalArrangement = Arrangement.spacedBy(Padding8),

@@ -1,7 +1,5 @@
 package com.example.githubrepo.util
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import java.time.Duration
 import java.time.Instant
 import java.time.LocalDateTime
@@ -9,7 +7,6 @@ import java.time.ZoneId
 import kotlin.math.abs
 
 object TimeUtils {
-    @RequiresApi(Build.VERSION_CODES.O)
     fun formatTimeAgo(timestamp: String?): String {
         if (timestamp.isNullOrEmpty()) return ""
         val instant = Instant.parse(timestamp)

@@ -21,8 +21,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.githubrepo.R
 import com.example.githubrepo.presentation.home.HomeScreen
-import com.example.githubrepo.presentation.main.Greeting
 import com.example.githubrepo.presentation.navgraph.Route
+import com.example.githubrepo.presentation.repositories.RepositoriesScreen
+import com.example.githubrepo.presentation.repositories.state.ReposViewModel
 import com.example.githubrepo.presentation.userdetails.UserDetailsScreen
 import com.example.githubrepo.presentation.userdetails.state.UserEvent
 import com.example.githubrepo.presentation.userdetails.state.UserViewModel
@@ -116,12 +117,12 @@ fun AppNavigator() {
                 )
             }
             composable(route = Route.RepositoryScreen.route) {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Repo",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                val viewModel: ReposViewModel = hiltViewModel()
+                val state = viewModel.state.value
+                RepositoriesScreen(
+                    state = state,
+                    event = viewModel::onEvent,
+                )
             }
 
             composable(route = Route.UserDetailsScreen.route) {

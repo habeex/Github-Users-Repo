@@ -139,6 +139,7 @@ fun UserTilePreview() {
             name = "",
             blog = "",
             public_repos = 0,
+            email = ""
         ), onClick = {}
     )
 }

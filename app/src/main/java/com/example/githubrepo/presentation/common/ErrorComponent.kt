@@ -23,16 +23,16 @@ object ErrorComponent {
                         CustomButton(
                             modifier = Modifier
                                 .fillMaxWidth(),
-                            text = "Search",
+                            text = "Okay",
                             onClick = onClick,
                         )
                     }
                 )
             }
-            is UIComponent.None -> TODO()
             is UIComponent.Toast -> {
                 Toast.makeText(context, uiComponent.message, Toast.LENGTH_SHORT).show()
             }
+            else -> {}
         }
     }
 }

@@ -24,7 +24,6 @@ import com.example.githubrepo.ui.theme.GithubRepoTheme
 @Composable
 fun AppTopBar(
     title: String = "",
-    onBookMarkClick: () -> Unit,
     onBackClick: () -> Unit,
 ) {
 
@@ -51,15 +50,7 @@ fun AppTopBar(
                     contentDescription = null,
                 )
             }
-        },
-        actions = {
-            IconButton(onClick = onBookMarkClick) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_bookmark),
-                    contentDescription = null
-                )
-            }
-        },
+        }
     )
 }
 
@@ -70,7 +61,6 @@ fun DetailsTopBarPreview() {
     GithubRepoTheme(dynamicColor = false) {
         AppTopBar(
             title = "Github User Details",
-            onBookMarkClick = { /*TODO*/ },
             onBackClick = { /*TODO*/ }
         )
     }
