@@ -10,6 +10,12 @@ android {
     namespace = "com.example.githubrepo"
     compileSdk = 34
 
+    testOptions {
+        animationsDisabled = true
+        unitTests {
+            isReturnDefaultValues = true
+        }
+    }
     defaultConfig {
         applicationId = "com.example.githubrepo"
         minSdk = 26
@@ -51,6 +57,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {
@@ -63,6 +70,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.paging.common.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -94,14 +102,12 @@ dependencies {
     implementation (libs.androidx.paging.runtime)
     implementation (libs.androidx.paging.compose)
 
-    //Room
-    implementation (libs.androidx.room.runtime.v241)
-    kapt(libs.androidx.room.compiler.v241)
-    implementation(libs.androidx.room.ktx)
-
     //Accompanist
     implementation(libs.accompanist.systemuicontroller)
-
     implementation(libs.androidx.multidex)
+
+    // Testing
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
+    testImplementation("io.mockk:mockk:1.12.0")
 
 }

@@ -5,7 +5,7 @@ import com.example.githubrepo.R
 
 object LanguageColor {
 
-    fun languageMap(): Map<String, LanguageInfo> {
+    private fun languageMap(): Map<String, LanguageInfo> {
         val colorResources = mapOf(
             "Java" to R.color.java_color,
             "Python" to R.color.python_color,
