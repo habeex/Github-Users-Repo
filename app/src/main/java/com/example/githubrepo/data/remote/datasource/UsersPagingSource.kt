@@ -40,6 +40,4 @@ class SearchUsersPagingSource(
             LoadResult.Error(throwable = e)
         }
     }
-
-
 }
