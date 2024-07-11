@@ -40,6 +40,7 @@ This project follows the Clean Architecture - MVVM principle, which ensures a cl
 - **Paging 3**: Efficiently loads large sets of data.
 - **Dagger Hilt**: Dependency injection library to manage dependencies.
 - **Retrofit**: Type-safe HTTP client for Android to handle network requests.
+- **MockK**: For unit testing
 
 ## Code Quality and Conventions
 
