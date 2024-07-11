@@ -9,6 +9,12 @@ This project is an Android application built using Jetpack Compose, designed to 
 
 The primary goal of this project is to build an Android application for searching GitHub repositories and retrieving user information using Jetpack Compose.
 
+### Screenshots
+<img src="https://github.com/habeex/Github-Users-Repo/assets/22020160/14741ed7-5373-429c-aa27-e0b5bc005fa9" width="150"/> <img src="https://github.com/habeex/Github-Users-Repo/assets/22020160/27035e79-2e44-468b-9370-01f0c8a42b65" width="150"/> <img src="https://github.com/habeex/Github-Users-Repo/assets/22020160/b85c5bcc-d4e1-4a24-9565-a0582a8a9f05" width="150"/> <img src="https://github.com/habeex/Github-Users-Repo/assets/22020160/90f3f4c6-f738-4883-befb-6b5ea98ae4ec" width="150"/> <img src="https://github.com/habeex/Github-Users-Repo/assets/22020160/1edde5e4-7963-4578-95f5-83687f882ace" width="150"/> 
+
+<img src="https://github.com/habeex/Github-Users-Repo/assets/22020160/b15f0f23-b791-4055-b09b-81da188a58ab" width="150"/> <img src="https://github.com/habeex/Github-Users-Repo/assets/22020160/124dce55-475d-4a9f-909e-8e9b0c772a0f" width="150"/> <img src="https://github.com/habeex/Github-Users-Repo/assets/22020160/b5fb9803-fe27-4301-a5c8-69c3726889b0" width="150"/> <img src="https://github.com/habeex/Github-Users-Repo/assets/22020160/b9588e8a-a2dd-4f64-aa8b-6d1f25e88996" width="150"/> 
+
+
 ## Features
 
 - Search for GitHub repositories.
@@ -34,6 +40,7 @@ This project follows the Clean Architecture - MVVM principle, which ensures a cl
 - **Paging 3**: Efficiently loads large sets of data.
 - **Dagger Hilt**: Dependency injection library to manage dependencies.
 - **Retrofit**: Type-safe HTTP client for Android to handle network requests.
+- **MockK**: For unit testing
 
 ## Code Quality and Conventions
 
