@@ -152,7 +152,7 @@ fun UserDetails(user: User, isUpdated: Boolean = false) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_location),
                         contentDescription = null,
-                        tint = Color.Unspecified
+                        tint = colorResource(id = R.color.grey)
                     )
                     Spacer(modifier = Modifier.width(Padding4))
                     Text(
@@ -167,7 +167,8 @@ fun UserDetails(user: User, isUpdated: Boolean = false) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_link),
                         contentDescription = null,
-                        tint = Color.Unspecified
+                        tint = colorResource(id = R.color.grey)
+
                     )
                     Spacer(modifier = Modifier.width(Padding4))
                     Box(
@@ -198,7 +199,8 @@ fun UserDetails(user: User, isUpdated: Boolean = false) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_people),
                 contentDescription = null,
-                tint = Color.Unspecified
+                tint = colorResource(id = R.color.grey)
+
             )
             Spacer(modifier = Modifier.width(Padding4))
             Text(

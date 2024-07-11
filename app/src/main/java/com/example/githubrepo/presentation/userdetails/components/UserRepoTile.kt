@@ -122,7 +122,7 @@ fun UserRepoTile(
                         Icon(
                             painter = painterResource(id = R.drawable.ic_star),
                             contentDescription = null,
-                            tint = Color.Unspecified
+                            tint = colorResource(id = R.color.grey)
                         )
                         Spacer(modifier = Modifier.width(Padding2))
                         Text(
