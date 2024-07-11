@@ -13,14 +13,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import com.example.githubrepo.data.manager.AppConnectivityManger
 import com.example.githubrepo.presentation.navgraph.NavGraph
 import com.example.githubrepo.presentation.navgraph.Route
 import com.example.githubrepo.ui.theme.GithubRepoTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject
+    lateinit var connectivityManger: AppConnectivityManger
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -39,7 +44,10 @@ class MainActivity : ComponentActivity() {
                 }
 
                 Box(modifier = Modifier.background(MaterialTheme.colorScheme.background).fillMaxSize()) {
-                    NavGraph(startDestination = Route.AppNavigation.route)
+                    NavGraph(
+                        startDestination = Route.AppNavigation.route,
+                        connectivityManger = connectivityManger
+                    )
                 }
             }
         }

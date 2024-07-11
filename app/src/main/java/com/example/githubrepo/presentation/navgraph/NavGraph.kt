@@ -5,11 +5,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
+import com.example.githubrepo.data.manager.AppConnectivityManger
 import com.example.githubrepo.presentation.navigator.AppNavigator
 
 @Composable
 fun NavGraph(
-    startDestination: String
+    startDestination: String,
+    connectivityManger: AppConnectivityManger
 ) {
     val navController = rememberNavController()
 
@@ -19,7 +21,9 @@ fun NavGraph(
             startDestination = Route.AppNavigatorScreen.route
         ) {
             composable(route = Route.AppNavigatorScreen.route){
-                AppNavigator()
+                AppNavigator(
+                    connectivityManger = connectivityManger
+                )
             }
         }
     }
