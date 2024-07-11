@@ -107,7 +107,7 @@ dependencies {
     implementation(libs.androidx.multidex)
 
     // Testing
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
-    testImplementation("io.mockk:mockk:1.12.0")
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
 
 }
