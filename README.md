@@ -9,6 +9,11 @@ This project is an Android application built using Jetpack Compose, designed to 
 
 The primary goal of this project is to build an Android application for searching GitHub repositories and retrieving user information using Jetpack Compose.
 
+### Screenshots
+<img src="https://github.com/habeex/Github-Users-Repo/assets/22020160/27035e79-2e44-468b-9370-01f0c8a42b65" width="300px"/> <img src="https://github.com/habeex/Github-Users-Repo/assets/22020160/b85c5bcc-d4e1-4a24-9565-a0582a8a9f05" width="300px"/> <img src="https://github.com/habeex/Github-Users-Repo/assets/22020160/90f3f4c6-f738-4883-befb-6b5ea98ae4ec" width="300px"/> <img src="https://github.com/habeex/Github-Users-Repo/assets/22020160/1edde5e4-7963-4578-95f5-83687f882ace" width="300px"/> 
+
+
+
 ## Features
 
 - Search for GitHub repositories.
